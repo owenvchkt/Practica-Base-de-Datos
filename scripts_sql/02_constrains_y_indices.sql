@@ -29,3 +29,20 @@ ALTER TABLE registro_oficial_trampas
     ADD CONSTRAINT fk_rot_trampa FOREIGN KEY (n_ruta, n_trampa) REFERENCES trampas(n_ruta, n_trampa),
     ADD CONSTRAINT fk_rot_tecnico FOREIGN KEY (codigo_tecnico) REFERENCES tecnico_vigilancia(codigo_trabajador),
     ADD CONSTRAINT fk_rot_vehiculo FOREIGN KEY (placa, n_ruta) REFERENCES vehiculo(placa, n_ruta);
+
+-- Solicitud_vehiculo
+ALTER TABLE SOLICITUD_VEHICULO
+    ADD COLUMN codigo_solicitud NUMERIC(6);
+
+-- Clave foranea del vehículo
+ALTER TABLE SOLICITUD_VEHICULO
+    ADD CONSTRAINT fk_vehiculo_solicitud FOREIGN KEY (codigo_solicitud) REFERENCES SOLICITUD(codigo);
+
+
+-- Solicitud_equipo
+ALTER TABLE SOLICITUD_EQUIPO 
+    ADD COLUMN codigo_solicitud NUMERIC(6);
+
+-- Clave foránea del equipo
+ALTER TABLE SOLICITUD_EQUIPO
+    ADD CONSTRAINT fk_equipo_solicitud FOREIGN KEY (codigo_solicitud) REFERENCES SOLICITUD(codigo);
