@@ -1,4 +1,4 @@
--- Tecnico de vigilancia (subtipo)
+-- Trabajadores y subtipos
 CREATE TABLE Trabajador (
     codigo_trabajador VARCHAR(20) ,
     Reponsable_de_zona VARCHAR(50) NOT NULL,
