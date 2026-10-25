@@ -11,3 +11,21 @@ ALTER TABLE vehiculo
 ALTER TABLE trabajo_diario
     ADD CONSTRAINT fk_trabajo_auxiliar FOREIGN KEY (auxiliar_encargado) REFERENCES trabajador(codigo),
     ADD CONSTRAINT fk_trabajo_ruta FOREIGN KEY (n_ruta) REFERENCES ruta(n_ruta);
+
+-- Restricciones para Trampas
+ALTER TABLE trampas
+    ADD CONSTRAINT fk_trampas_ruta FOREIGN KEY (n_ruta) REFERENCES ruta(n_ruta),
+    ADD CONSTRAINT fk_trampas_tecnico FOREIGN KEY (codigo_inspector) REFERENCES tecnico_vigilancia(codigo_trabajador),
+    ADD CONSTRAINT chk_trampas_tipo CHECK (tipo_trampa IN ('JT', 'ML'));
+
+-- Restricciones para Registro Oficial de Muestras (ROM)
+ALTER TABLE registro_oficial_muestras
+    ADD CONSTRAINT fk_rom_ruta FOREIGN KEY (n_ruta) REFERENCES ruta(n_ruta),
+    ADD CONSTRAINT fk_rom_auxiliar FOREIGN KEY (codigo_auxiliar) REFERENCES auxiliar(codigo_trabajador),
+    ADD CONSTRAINT chk_rom_procedencia CHECK (procedencia IN ('árbol', 'suelo'));
+
+-- Restricciones para Registro Oficial de Trampas (ROT)
+ALTER TABLE registro_oficial_trampas
+    ADD CONSTRAINT fk_rot_trampa FOREIGN KEY (n_ruta, n_trampa) REFERENCES trampas(n_ruta, n_trampa),
+    ADD CONSTRAINT fk_rot_tecnico FOREIGN KEY (codigo_tecnico) REFERENCES tecnico_vigilancia(codigo_trabajador),
+    ADD CONSTRAINT fk_rot_vehiculo FOREIGN KEY (placa, n_ruta) REFERENCES vehiculo(placa, n_ruta);
