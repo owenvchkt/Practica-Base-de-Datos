@@ -1,7 +1,15 @@
 -- Restricciones para Tecnico de vigilancia
 ALTER TABLE tecnico_vigilancia
     ADD CONSTRAINT uk_tecnico_placa UNIQUE (placa),
-    ADD CONSTRAINT fk_tecnico_trabajor FOREIGN KEY (codigo_trabajador) REFERENCES trabajador(codigo);
+
+ALTER TABLE tecnico_cin
+    ADD CONSTRAINT uk_tecnico_placa UNIQUE (placa),
+    ADD CONSTRAINT fk_tecnico_cin_analista FOREIGN KEY (codigo_trabajador) REFERENCES analista(codigo_trabajador);
+
+ALTER TABLE auxiliar
+    ADD CONSTRAINT uk_tecnico_placa UNIQUE (placa),
+    ADD CONSTRAINT fk_auxiliar_tecnico FOREIGN KEY (codigo_trabajador) REFERENCES analista(codigo_trabajador);
+    ADD CONSTRAINT fk_auxiliar_analista FOREIGN KEY (codigo_trabajador) REFERENCES tecnico_cin(codigo_trabajador);
 
 -- Restricciones para Vehiculo
 ALTER TABLE vehiculo
