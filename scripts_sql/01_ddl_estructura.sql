@@ -71,3 +71,22 @@ CREATE TABLE registro_oficial_trampas (
     kilometraje_final NUMERIC NOT NULL,
     CONSTRAINT pk_registro_oficial_trampas PRIMARY KEY (n_ruta, n_trampa, fecha)
 );
+
+-- Solicitud
+CREATE TABLE SOLICITUD (
+  codigo NUMERIC(6) CONSTRAINT cod_solicitud PRIMARY KEY,
+  tipo_de_solicitud VARCHAR(20) NOT NULL,
+  motivo_de_solicitud VARCHAR(50) NOT NULL
+);
+
+-- Solicitud con vehiculo
+CREATE TABLE SOLICITUD_VEHICULO (
+  matricula VARCHAR(10) CONSTRAINT mat_vehiculo PRIMARY KEY,
+  disponibilidad VARCHAR(2) NOT NULL
+);
+
+-- Solicitud con equipo
+CREATE TABLE SOLICITUD_EQUIPO (
+  codigo_equipo NUMERIC(10) CONSTRAINT cod_equipo PRIMARY KEY,
+  tipo_equipo VARCHAR(20) NOT NULL
+);
