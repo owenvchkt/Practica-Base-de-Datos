@@ -1,8 +1,27 @@
 -- Tecnico de vigilancia (subtipo)
+CREATE TABLE Trabajador (
+    codigo_trabajador VARCHAR(20) ,
+    Reponsable_de_zona VARCHAR(50) NOT NULL,
+    Zona VARCHAR(20) NOT NULL,
+    telefono INTEGER,
+    CONSTRAINT pk_Trabajador PRIMARY KEY (codigo_trabajador)
+);
+CREATE TABLE Analista (
+    ROMF VARCHAR(50) NOT NULL,
+);
 CREATE TABLE tecnico_vigilancia (
-    codigo_trabajador VARCHAR(20),
     placa VARCHAR(10) NOT NULL,
-    CONSTRAINT pk_tecnico_vigilancia PRIMARY KEY (codigo_trabajador)
+    CONSTRAINT pk_tecnico_vigilancia PRIMARY KEY (placa)
+);
+CREATE TABLE tecnico_cin (
+    placa VARCHAR(10) NOT NULL,
+    analista VARCHAR(50) NOT NULL,
+    CONSTRAINT pk_tecnico_vigilancia PRIMARY KEY (placa)
+);
+CREATE TABLE auxiliar (
+    analista VARCHAR(50) NOT NULL,
+    tecnico_cin VARCHAR(50) NOT NULL,
+    placa VARCHAR(10) ,
 );
 
 -- Ruta
