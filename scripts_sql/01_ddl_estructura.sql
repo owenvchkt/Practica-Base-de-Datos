@@ -98,13 +98,13 @@ CREATE TABLE SOLICITUD (
   motivo_de_solicitud VARCHAR(50) NOT NULL
 );
 
--- Solicitud con vehiculo
+-- Solicitud de vehiculo
 CREATE TABLE SOLICITUD_VEHICULO (
   matricula VARCHAR(10) CONSTRAINT mat_vehiculo PRIMARY KEY,
   disponibilidad VARCHAR(2) NOT NULL
 );
 
--- Solicitud con equipo
+-- Solicitud de equipo
 CREATE TABLE SOLICITUD_EQUIPO (
   codigo_equipo NUMERIC(10) CONSTRAINT cod_equipo PRIMARY KEY,
   tipo_equipo VARCHAR(20) NOT NULL
