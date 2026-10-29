@@ -109,3 +109,17 @@ CREATE TABLE SOLICITUD_EQUIPO (
   codigo_equipo NUMERIC(10) CONSTRAINT cod_equipo PRIMARY KEY,
   tipo_equipo VARCHAR(20) NOT NULL
 );
+
+----------------------------------------------------------------------------------------------------
+-- espacio para insertar registros
+
+Insert into Trabajador (codigo_trabajador, Reponsable_de_zona,  Zona, telefono)
+Values 
+    ('15f27d','Juan Carlos','Uchumayo',987123574),
+    ('83j56b','Pepe casas','Pedregal',923450765),
+    ('39t05j','Maria alvarado','Arequipa',921047394),
+    ('27h54r','Pedro samuel','Pedregal',904653833),
+    ('29f45n','Orlando toledo','La Joya',940673622);
+
+
+
