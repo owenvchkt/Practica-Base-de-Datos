@@ -1,27 +1,33 @@
 -- Trabajadores y subtipos
 CREATE TABLE Trabajador (
-    codigo_trabajador VARCHAR(20) ,
+    codigo VARCHAR(6) NOT NULL,
     Reponsable_de_zona VARCHAR(50) NOT NULL,
     Zona VARCHAR(20) NOT NULL,
     telefono INTEGER,
-    CONSTRAINT pk_Trabajador PRIMARY KEY (codigo_trabajador)
+    CONSTRAINT pk_Trabajador PRIMARY KEY (codigo)
 );
 CREATE TABLE Analista (
+    codigo_analista VARCHAR(6) NOT NULL,
     ROMF VARCHAR(50) NOT NULL,
+    CONSTRAINT pk_Analista PRIMARY KEY (codigo_analista)
 );
 CREATE TABLE tecnico_vigilancia (
+    codigo_t_v VARCHAR(6) NOT NULL,
     placa VARCHAR(10) NOT NULL,
-    CONSTRAINT pk_tecnico_vigilancia PRIMARY KEY (placa)
+    CONSTRAINT pk_tecnico_vigilancia PRIMARY KEY (codigo_t_v)
 );
 CREATE TABLE tecnico_cin (
+    codigo_t_c VARCHAR(6) NOT NULL,
+    analista VARCHAR(6) NOT NULL,
     placa VARCHAR(10) NOT NULL,
-    analista VARCHAR(50) NOT NULL,
-    CONSTRAINT pk_tecnico_vigilancia PRIMARY KEY (placa)
+    CONSTRAINT pk_tecnico_vigilancia PRIMARY KEY (codigo_t_c)
 );
 CREATE TABLE auxiliar (
-    analista VARCHAR(50) NOT NULL,
-    tecnico_cin VARCHAR(50) NOT NULL,
+    codigo_auxiliar VARCHAR(6) NOT NULL,
+    analista VARCHAR(6) NOT NULL,
+    tecnico_cin VARCHAR(6) NOT NULL,
     placa VARCHAR(10) ,
+    CONSTRAINT pk_auxiliar PRIMARY KEY (codigo_auxiliar)
 );
 
 -- Ruta
@@ -115,11 +121,11 @@ CREATE TABLE SOLICITUD_EQUIPO (
 
 Insert into Trabajador (codigo_trabajador, Reponsable_de_zona,  Zona, telefono)
 Values 
-    ('15f27d','Juan Carlos','Uchumayo',987123574),
-    ('83j56b','Pepe casas','Pedregal',923450765),
-    ('39t05j','Maria alvarado','Arequipa',921047394),
-    ('27h54r','Pedro samuel','Pedregal',904653833),
-    ('29f45n','Orlando toledo','La Joya',940673622);
+    ('153456','Juan Carlos','Uchumayo',987123574),
+    ('832456','Pepe casas','Tambo',923450765),
+    ('398573','Maria alvarado','Arequipa',921047394),
+    ('278645','Pedro samuel','Santa rita',904653833),
+    ('296548','Orlando toledo','Joya antigua',940673622);
 
 
 
