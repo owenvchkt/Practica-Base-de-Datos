@@ -179,36 +179,23 @@ Values
     (581238793,0912345,'296548',2,'2026-10-29','Suelo','Mango','Sutano'),
     (472190378,0912345,'296548',5,'2026-10-28','Planta','Chirimoya','Criolla');
 
-Insert into registro_oficial_trampas ()
+Insert into registro_oficial_trampas (Cod_trampa, codigo_tecnico, fecha, exposicion, placa, kilometraje_inicial, kilometraje_final)
 Values   
-    (),
-    (),
-    (),
-    (),
-    ();
+    ('011702301JT','832456','2026-10-28',4,'DHF128',34563,34566),
+    ('011702301ML','832456','2026-10-29',6,'DHF128',34566,34567);
+
 
 Insert into SOLICITUD ()
 Values   
-    (),
-    (),
-    (),
     (),
     ();
 
 Insert into SOLICITUD_VEHICULO ()
 Values   
-    (),
-    (),
-    (),
-    (),
     ();
 
 Insert into SOLICITUD_EQUIPO ()
 Values   
-    (),
-    (),
-    (),
-    (),
     ();
 
 
