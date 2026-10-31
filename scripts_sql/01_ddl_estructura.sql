@@ -46,7 +46,7 @@ CREATE TABLE vehiculo (
     placa VARCHAR(10),
     n_ruta INTEGER,
     tipo_de_vehiculo VARCHAR(10) NOT NULL,
-    nombre VARCHAR(50) NOT NULL,
+    nombre VARCHAR(50),
     kilometraje_inicial NUMERIC NOT NULL,
     kilometraje_final NUMERIC NOT NULL,
     CONSTRAINT pk_vehiculo PRIMARY KEY (placa, n_ruta)
@@ -156,9 +156,10 @@ Values
     
 Insert into Vehiculo (placa, n_ruta, tipo_de_vehiculo, nombre, kilometraje_inicial, kilometraje_final)
 Values   
-    ('DHF128','','Moto','',34566,34567),
-    ('','','Camioneta','',34566,34567),
-    ('','','Combi','',34566,34567),
+    ('DHF128','0117023','Moto','Pepe casas',34566,34567),
+    ('GFS466',NULL,'Camioneta',NULL,36578,36578),
+    ('JDK329','0407194','Combi','Maria alvarado',267536,267541),
+    ('GFS466',0235235,'Camioneta','Juan Carlos',76566,34568),
     
 Insert into trabajo_diario ()
 Values   
