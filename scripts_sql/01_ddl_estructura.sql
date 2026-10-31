@@ -161,29 +161,23 @@ Values
     ('JDK329','0407194','Combi','Maria alvarado',267536,267541),
     ('GFS466',0235235,'Camioneta','Juan Carlos',76566,34568),
     
-Insert into trabajo_diario ()
+Insert into trabajo_diario (auxiliar_encargado, tipo_de_control, n_ruta)
 Values   
-    (),
-    (),
-    (),
-    (),
-    ();
+    ('278645','Quimico',0912345),
+    ('296548','Biologo',0502001);
     
-Insert into trampas ()
+Insert into trampas (Cd_trampa,n_ruta,tipo_trampa,estado,codigo_inspector)
 Values   
-    (),
-    (),
-    (),
-    (),
-    ();
+    (011702301,0117023,'JT','B','832456'),
+    (011702302,0117023,'ML','S','832456'),
+    (011702303,0117023,'ML','B','832456');
     
-Insert into registro_oficial_muestras ()
+Insert into registro_oficial_muestras (Id_registro, n_ruta, codigo_auxiliar, n_muestra, fecha, procedencia, especie, cultivar)
 Values   
-    (),
-    (),
-    (),
-    (),
-    ();
+    (374958372,0502001,'278645',3,'2026-10-30','Planta','Palta','Fuerte'),
+    (394726190,0502001,'278645',12,'2026-10-29','Planta','Guayaba','Hass'),
+    (581238793,0912345,'296548',2,'2026-10-29','Suelo','Mango','Sutano'),
+    (472190378,0912345,'296548',5,'2026-10-28','Planta','Chirimoya','Criolla');
 
 Insert into registro_oficial_trampas ()
 Values   
