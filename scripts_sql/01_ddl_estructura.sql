@@ -33,7 +33,7 @@ CREATE TABLE auxiliar (
 -- Ruta
 CREATE TABLE ruta (
     n_ruta INTEGER,
-    provincia VARCHAR(50) NOT NULL,
+    provincia VARCHAR(20) NOT NULL,
     cantidad INTEGER NOT NULL,
     n_muestras INTEGER NOT NULL,
     fecha DATE NOT NULL,
@@ -45,18 +45,17 @@ CREATE TABLE ruta (
 CREATE TABLE vehiculo (
     placa VARCHAR(10),
     n_ruta INTEGER,
-    tipo_de_vehiculo VARCHAR(30) NOT NULL,
+    tipo_de_vehiculo VARCHAR(10) NOT NULL,
     nombre VARCHAR(50) NOT NULL,
     kilometraje_inicial NUMERIC NOT NULL,
     kilometraje_final NUMERIC NOT NULL,
-    observacion VARCHAR(255) NOT NULL,
     CONSTRAINT pk_vehiculo PRIMARY KEY (placa, n_ruta)
 );
 
 -- Trabajo Diario
 CREATE TABLE trabajo_diario (
-    auxiliar_encargado VARCHAR(20),
-    tipo_de_control VARCHAR(50) NOT NULL,
+    auxiliar_encargado VARCHAR(6),
+    tipo_de_control VARCHAR(12) NOT NULL,
     n_ruta INTEGER NOT NULL,
     CONSTRAINT pk_trabajo_diario PRIMARY KEY (auxiliar_encargado)
 );
