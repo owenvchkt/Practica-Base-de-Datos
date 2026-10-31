@@ -62,57 +62,60 @@ CREATE TABLE trabajo_diario (
 
 -- Trampas
 CREATE TABLE trampas (
+    Cd_trampa VARCHAR(9),
     n_ruta INTEGER,
-    n_trampa INTEGER,
     tipo_trampa VARCHAR(2) NOT NULL,
-    estado VARCHAR(50) NOT NULL,
-    exposicion VARCHAR(50) NOT NULL,
-    codigo_inspector VARCHAR(20) NOT NULL,
-    CONSTRAINT pk_trampas PRIMARY KEY (n_ruta, n_trampa)
+    estado VARCHAR(1) NOT NULL,
+    codigo_inspector INTEGER NOT NULL,
+    CONSTRAINT pk_trampas PRIMARY KEY (Cd_trampa)
 );
 
 -- Registro Oficial de Muestras (ROM)
 CREATE TABLE registro_oficial_muestras (
+    Id_registro NUMERIC,
     n_ruta INTEGER,
-    codigo_auxiliar VARCHAR(20),
+    codigo_auxiliar VARCHAR(6),
     n_muestra INTEGER,
     fecha DATE DEFAULT CURRENT_DATE NOT NULL,
-    procedencia VARCHAR(20) NOT NULL,
-    especie VARCHAR(50) NOT NULL,
-    cultivar VARCHAR(50) NOT NULL,
-    CONSTRAINT pk_registro_oficial_muestras PRIMARY KEY (n_ruta, codigo_auxiliar, n_muestra)
+    procedencia VARCHAR(7) NOT NULL,
+    especie VARCHAR(20) NOT NULL,
+    cultivar VARCHAR(20) NOT NULL,
+    CONSTRAINT pk_registro_oficial_muestras PRIMARY KEY (Id_registro)
 );
 
 -- Registro Oficial de Trampas (ROT)
 CREATE TABLE registro_oficial_trampas (
-    n_ruta INTEGER,
-    n_trampa INTEGER,
+    Cod_trampa VARCHAR(11) INTEGER,
+    codigo_tecnico VARCHAR(6) NOT NULL,
     fecha DATE DEFAULT CURRENT_DATE NOT NULL,
-    codigo_tecnico VARCHAR(20) NOT NULL,
-    procedencia VARCHAR(50) NOT NULL,
+    exposicion NUMERIC NOT NULL,
     placa VARCHAR(10) NOT NULL,
     kilometraje_inicial NUMERIC NOT NULL,
     kilometraje_final NUMERIC NOT NULL,
-    CONSTRAINT pk_registro_oficial_trampas PRIMARY KEY (n_ruta, n_trampa, fecha)
+    CONSTRAINT pk_registro_oficial_trampas PRIMARY KEY (Cod_trampa)
 );
 
 -- Solicitud
 CREATE TABLE SOLICITUD (
-  codigo NUMERIC(6) CONSTRAINT cod_solicitud PRIMARY KEY,
-  tipo_de_solicitud VARCHAR(20) NOT NULL,
-  motivo_de_solicitud VARCHAR(50) NOT NULL
+    Id_solicitud NUMERIC,
+    codigo NUMERIC(6) CONSTRAINT cod_solicitud PRIMARY KEY,
+    tipo_de_solicitud VARCHAR(20) NOT NULL,
+    motivo_de_solicitud VARCHAR(50) NOT NULL,
+    CONSTRAINT pk_SOLICITUD PRIMARY KEY (Id_solicitud)
 );
 
 -- Solicitud de vehiculo
 CREATE TABLE SOLICITUD_VEHICULO (
   matricula VARCHAR(10) CONSTRAINT mat_vehiculo PRIMARY KEY,
-  disponibilidad VARCHAR(2) NOT NULL
+  Tipo_vehiculo VARCHAR(10) NOT NULL,
+        tiempo_uso numeric,
 );
 
 -- Solicitud de equipo
 CREATE TABLE SOLICITUD_EQUIPO (
   codigo_equipo NUMERIC(10) CONSTRAINT cod_equipo PRIMARY KEY,
-  tipo_equipo VARCHAR(20) NOT NULL
+  tipo_equipo VARCHAR(10) NOT NULL,
+    tiempo_uso numeric,
 );
 
 ----------------------------------------------------------------------------------------------------
