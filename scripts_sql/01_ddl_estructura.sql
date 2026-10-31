@@ -154,13 +154,11 @@ Values
     (0912345,'Arequipa',25,26,'2026-10-15',42),
     (0502001,'Arequipa',29,30,'2026-10-7',41);
     
-Insert into Vehiculo ()
+Insert into Vehiculo (placa, n_ruta, tipo_de_vehiculo, nombre, kilometraje_inicial, kilometraje_final)
 Values   
-    (),
-    (),
-    (),
-    (),
-    ();
+    ('DHF128','','Moto','',34566,34567),
+    ('','','Camioneta','',34566,34567),
+    ('','','Combi','',34566,34567),
     
 Insert into trabajo_diario ()
 Values   
