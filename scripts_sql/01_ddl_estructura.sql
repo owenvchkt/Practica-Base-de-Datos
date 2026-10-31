@@ -101,6 +101,7 @@ CREATE TABLE SOLICITUD (
     codigo NUMERIC(6) CONSTRAINT cod_solicitud PRIMARY KEY,
     tipo_de_solicitud VARCHAR(20) NOT NULL,
     motivo_de_solicitud VARCHAR(50) NOT NULL,
+    tiempo_uso NUMERIC,
     CONSTRAINT pk_SOLICITUD PRIMARY KEY (Id_solicitud)
 );
 
@@ -108,14 +109,12 @@ CREATE TABLE SOLICITUD (
 CREATE TABLE SOLICITUD_VEHICULO (
   matricula VARCHAR(10) CONSTRAINT mat_vehiculo PRIMARY KEY,
   Tipo_vehiculo VARCHAR(10) NOT NULL,
-        tiempo_uso numeric,
 );
 
 -- Solicitud de equipo
 CREATE TABLE SOLICITUD_EQUIPO (
   codigo_equipo NUMERIC(10) CONSTRAINT cod_equipo PRIMARY KEY,
   tipo_equipo VARCHAR(10) NOT NULL,
-    tiempo_uso numeric,
 );
 
 ----------------------------------------------------------------------------------------------------
@@ -185,18 +184,18 @@ Values
     ('011702301ML','832456','2026-10-29',6,'DHF128',34566,34567);
 
 
-Insert into SOLICITUD ()
+Insert into SOLICITUD (Id_solicitud, codigo, tipo_de_solicitud, motivo_de_solicitud,tiempo_uso)
 Values   
-    (),
-    ();
+    (395740348,'153456','Vehiculo','Transporte de personal',2),
+    (394759493,'398573','Equipo','Uso en zonas alejadas',3);
 
-Insert into SOLICITUD_VEHICULO ()
+Insert into SOLICITUD_VEHICULO (matricula, Tipo_vehiculo)
 Values   
-    ();
+    ('GFS466','Camioneta');
 
-Insert into SOLICITUD_EQUIPO ()
+Insert into SOLICITUD_EQUIPO (codigo_equipo, tipo_equipo)
 Values   
-    ();
+    ('3654','mochila fumigadora');
 
 
 
