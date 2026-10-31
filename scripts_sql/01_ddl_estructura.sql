@@ -129,5 +129,94 @@ Values
     ('278645','Pedro samuel','Santa rita',904653833),
     ('296548','Orlando toledo','Joya antigua',940673622);
 
+Insert into Analista (codigo_analista, ROMF)
+Values 
+    ('153456','Amadeo Arellano');
+
+Insert into tecnico_vigilancia (codigo_t_v, placa)
+Values  
+    ('832456','DHF128');
+
+Insert into tecnico_cin (codigo_t_c,analista,placa)
+Values  
+    ('398573','153456','JDK329');
+    
+Insert into Auxiliar (codigo_auxiliar,analista,tecnico_cin,placa)
+Values   
+    ('278645','153456','398573',NULL),
+    ('296548','153456','398573','DHE695');
+    
+Insert into Ruta (n_ruta,provincia,cantidad,n_muestras,fecha,semana)
+Values   
+    (0235235,'Arequipa',23,14,'2026-10-19',43),
+    (0117023,'Islay',30,13,'2026-10-22',43),
+    (0407194,'Arequipa',26,9,'2026-10-12',42),
+    (0912345,'Arequipa',25,26,'2026-10-15',42),
+    (0502001,'Arequipa',29,30,'2026-10-7',41);
+    
+Insert into Vehiculo ()
+Values   
+    (),
+    (),
+    (),
+    (),
+    ();
+    
+Insert into trabajo_diario ()
+Values   
+    (),
+    (),
+    (),
+    (),
+    ();
+    
+Insert into trampas ()
+Values   
+    (),
+    (),
+    (),
+    (),
+    ();
+    
+Insert into registro_oficial_muestras ()
+Values   
+    (),
+    (),
+    (),
+    (),
+    ();
+
+Insert into registro_oficial_trampas ()
+Values   
+    (),
+    (),
+    (),
+    (),
+    ();
+
+Insert into SOLICITUD ()
+Values   
+    (),
+    (),
+    (),
+    (),
+    ();
+
+Insert into SOLICITUD_VEHICULO ()
+Values   
+    (),
+    (),
+    (),
+    (),
+    ();
+
+Insert into SOLICITUD_EQUIPO ()
+Values   
+    (),
+    (),
+    (),
+    (),
+    ();
+
 
 
