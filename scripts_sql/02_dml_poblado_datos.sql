@@ -5,3 +5,11 @@ Values
   (396690432,'276593','Equipo','Renovacion de trampas',3),
   (394759493,'398573','Equipo','Uso en zonas alejadas',3),
   (393509483,'504956','Vehiculo','Transporte de trampas',2);
+
+Insert into SOLICITUD_VEHICULO (matricula, Tipo_vehiculo)
+Values   
+  ('GFS466','Camioneta'),
+  ('NSY937','Motocicleta'),
+  ('ETX565','Minivan'),
+  ('DAJ310','Automovil'),
+  ('HAT528','Camion ligero');
