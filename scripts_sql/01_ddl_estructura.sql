@@ -108,7 +108,7 @@ CREATE TABLE SOLICITUD (
 -- Solicitud de vehiculo
 CREATE TABLE SOLICITUD_VEHICULO (
   matricula VARCHAR(10) CONSTRAINT mat_vehiculo PRIMARY KEY,
-  Tipo_vehiculo VARCHAR(10) NOT NULL,
+  Tipo_vehiculo VARCHAR(20) NOT NULL,
 );
 
 -- Solicitud de equipo
