@@ -114,7 +114,7 @@ CREATE TABLE SOLICITUD_VEHICULO (
 -- Solicitud de equipo
 CREATE TABLE SOLICITUD_EQUIPO (
   codigo_equipo NUMERIC(10) CONSTRAINT cod_equipo PRIMARY KEY,
-  tipo_equipo VARCHAR(10) NOT NULL,
+  tipo_equipo VARCHAR(20) NOT NULL,
 );
 
 ----------------------------------------------------------------------------------------------------
