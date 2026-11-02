@@ -13,3 +13,11 @@ Values
   ('ETX565','Minivan'),
   ('DAJ310','Automovil'),
   ('HAT528','Camion ligero');
+
+Insert into SOLICITUD_EQUIPO (codigo_equipo, tipo_equipo)
+Values   
+  ('3654','mochila fumigadora'),
+  ('5837','fumigadora estacionaria'),
+  ('9074','pesticida'),
+  ('6685','mascara con filtro'),
+  ('1927','serruchos');
