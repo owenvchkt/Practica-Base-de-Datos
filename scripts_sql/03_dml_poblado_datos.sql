@@ -7,27 +7,51 @@ Insert into Trabajador (codigo, Reponsable_de_zona, Zona, telefono) Values
     ('296548','Orlando toledo','Joya antigua',940673622),
     ('705945','Luis Fernandez','Cural',987654321), 
     ('276593','Ana Gomez','Vitor',912345678), 
-    ('504956','Carlos Ruiz','Siguas',998877665);
+    ('504956','Carlos Ruiz','Siguas',998877665),
+    ('612394','Luis Perez','Majes (I)',954321876),
+    ('845932','Carmen Rojas','Camana',965412398),
+    ('492015','Jorge Diaz','Yauca',978564123),
+    ('758392','Rosa Silva','Vitor',932145876),
+    ('184950','Raul Castro','Ocoña',945612378),
+    ('593821','Hugo Blanco','Viraco',987456123),
+    ('302918','Ines Ramos','Colca',912365478),
+    ('918273','Jose Lira','Tambo',963258741),
+    ('456129','Paco Mora','Cural',974125896),
+    ('827364','Luz Tapia','Siguas',985214763),
+    ('635241','Tito Ruiz','Yuramayo',996325874),
+    ('294857','Gema Paz','Chapa',914785236);
 
 -- Analista
 Insert into Analista (codigo_analista, ROMF) Values 
-    ('153456','Amadeo Arellano');
+    ('153456','Amadeo Arellano'),
+    ('612394','Beto Caceres'),
+    ('845932','Cesar Luna'),
+    ('492015','Diana Rios'),
+    ('758392','Elena Vargas');
 
 -- Tecnico de vigilancia
 Insert into tecnico_vigilancia (codigo_t_v, placa) Values  
     ('832456','DHF128'),
-    ('705945','BJW102');
+    ('705945','BJW102'),
+    ('184950','XTY892'),
+    ('593821','VBN456'),
+    ('302918','MKL789');
 
 -- Tecnico CIN
 Insert into tecnico_cin (codigo_t_c, analista, placa) Values  
     ('398573','153456','JDK329'),
-    ('504956','153456','POI963');
+    ('504956','153456','POI963'),
+    ('918273','612394','RTY345'),
+    ('456129','845932','FGH678'),
+    ('827364','492015','CVB901');
     
 -- Auxiliar
 Insert into Auxiliar (codigo_auxiliar, analista, tecnico_cin, placa) Values   
     ('278645','153456','398573',NULL),
     ('296548','153456','398573','DHE695'),
-    ('276593','153456','504956',NULL);
+    ('276593','153456','504956',NULL),
+    ('635241','612394','918273','LKP234'),
+    ('294857','845932','456129','QWE567');
 
 -- Ruta
 Insert into Ruta (n_ruta, provincia, cantidad, n_muestras, fecha, semana) Values   
@@ -53,7 +77,9 @@ Insert into Vehiculo (placa, n_ruta, tipo_de_vehiculo, nombre, kilometraje_inici
 Insert into trabajo_diario (auxiliar_encargado, tipo_de_control, n_ruta) Values   
     ('278645','Quimico','0912345'),
     ('296548','Biologico','0502001'),
-    ('276593','Cultural','0702010');
+    ('276593','Cultural','0702010'),
+    ('635241','Quimico','0407194'),
+    ('294857','Biologico','1005022');
 
 -- Trampas
 Insert into trampas (Cd_trampa, n_ruta, tipo_trampa, estado, codigo_inspector) Values   
@@ -61,7 +87,8 @@ Insert into trampas (Cd_trampa, n_ruta, tipo_trampa, estado, codigo_inspector) V
     ('011702302', '0117023', 'ML', 'S', '832456'),
     ('011702303', '0117023', 'ML', 'B', '832456'),
     ('030101501', '0301015', 'JT', 'B', '705945'),
-    ('030101502', '0301015', 'ML', 'M', '705945');
+    ('030101502', '0301015', 'ML', 'M', '705945'),
+    ('030101503', '0301015', 'JT', 'R', '705945');
     
 -- Registro Oficial de Muestras (ROM)
 Insert into registro_oficial_muestras (Id_registro, n_ruta, codigo_auxiliar, n_muestra, fecha, procedencia, especie, cultivar) Values   
@@ -75,7 +102,9 @@ Insert into registro_oficial_muestras (Id_registro, n_ruta, codigo_auxiliar, n_m
 Insert into registro_oficial_trampas (Cod_trampa, codigo_tecnico, fecha, exposicion, placa, kilometraje_inicial, kilometraje_final) Values   
     ('011702301JT','832456','2026-10-28',4,'DHF128',34563,34566),
     ('011702301ML','832456','2026-10-29',6,'DHF128',34566,34567),
-    ('030101501JT','705945','2026-10-25',7,'BJW102',10000,10020);
+    ('030101501JT','705945','2026-10-25',7,'BJW102',10000,10020),
+    ('011702303ML','832456','2026-10-30',5,'DHF128',34567,34570),
+    ('030101502ML','705945','2026-10-26',8,'BJW102',10020,10045);
 
 -- Solicitud
 Insert into SOLICITUD (Id_solicitud, codigo, tipo_de_solicitud, motivo_de_solicitud, tiempo_uso) Values
