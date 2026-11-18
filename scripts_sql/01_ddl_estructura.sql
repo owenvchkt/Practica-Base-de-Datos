@@ -123,3 +123,16 @@ CREATE TABLE SOLICITUD_EQUIPO (
     codigo_equipo VARCHAR(10) CONSTRAINT cod_equipo PRIMARY KEY,
     tipo_equipo VARCHAR(20) NOT NULL
 );
+
+--secuencia (para los id de los empleados)
+Create sequence seq_id_empleado
+start with 100000
+increment by 1;
+
+Create sequence seq_id_registro
+start with 100000000
+increment by 1;
+
+Create sequence seq_id_solicitud
+start with 100000000
+increment by 1;
