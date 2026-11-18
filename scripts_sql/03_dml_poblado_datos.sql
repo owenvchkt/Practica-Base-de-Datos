@@ -91,12 +91,12 @@ Insert into trampas (Cd_trampa, n_ruta, tipo_trampa, estado, codigo_inspector) V
     ('030101503', '0301015', 'JT', 'R', '705945');
     
 -- Registro Oficial de Muestras (ROM)
-Insert into registro_oficial_muestras (Id_registro, n_ruta, codigo_auxiliar, n_muestra, fecha, procedencia, especie, cultivar) Values   
-    (374958372, '0502001', '278645', 3, '2026-10-30', 'Planta', 'Palta', 'Fuerte'),
-    (394726190, '0502001', '278645', 12, '2026-10-29', 'Planta', 'Guayaba', 'Hass'),
-    (581238793, '0912345', '296548', 2, '2026-10-29', 'Suelo', 'Mango', 'Sutano'),
-    (472190378, '0912345', '296548', 5, '2026-10-28', 'Planta', 'Chirimoya', 'Criolla'),
-    (683920184, '0702010', '276593', 8, '2026-10-22', 'Planta', 'Uva', 'Italia');
+Insert into registro_oficial_muestras (n_ruta, codigo_auxiliar, n_muestra, fecha, procedencia, especie, cultivar) Values   
+    ('0502001', '278645', 3, '2026-10-30', 'Planta', 'Palta', 'Fuerte'),
+    ('0502001', '278645', 12, '2026-10-29', 'Planta', 'Guayaba', 'Hass'),
+    ('0912345', '296548', 2, '2026-10-29', 'Suelo', 'Mango', 'Sutano'),
+    ('0912345', '296548', 5, '2026-10-28', 'Planta', 'Chirimoya', 'Criolla'),
+    ('0702010', '276593', 8, '2026-10-22', 'Planta', 'Uva', 'Italia');
 
 -- Registro Oficial de Trampas (ROT)
 Insert into registro_oficial_trampas (Cod_trampa, codigo_tecnico, fecha, exposicion, placa, kilometraje_inicial, kilometraje_final) Values   
@@ -107,12 +107,12 @@ Insert into registro_oficial_trampas (Cod_trampa, codigo_tecnico, fecha, exposic
     ('030101502ML','705945','2026-10-26',8,'BJW102',10020,10045);
 
 -- Solicitud
-Insert into SOLICITUD (Id_solicitud, codigo, tipo_de_solicitud, motivo_de_solicitud, tiempo_uso) Values
-    (395740348,'153456','Vehiculo','Transporte de personal',2),
-    (395376895,'705945','Equipo','Instalacion de trampas',2),
-    (396690432,'276593','Equipo','Renovacion de trampas',3),
-    (394759493,'398573','Equipo','Uso en zonas alejadas',3),
-    (393509483,'504956','Vehiculo','Transporte de trampas',2);
+Insert into SOLICITUD (codigo, tipo_de_solicitud, motivo_de_solicitud, tiempo_uso) Values
+    ('153456','Vehiculo','Transporte de personal',2),
+    ('705945','Equipo','Instalacion de trampas',2),
+    ('276593','Equipo','Renovacion de trampas',3),
+    ('398573','Equipo','Uso en zonas alejadas',3),
+    ('504956','Vehiculo','Transporte de trampas',2);
 
 -- Solicitud Vehiculo
 Insert into SOLICITUD_VEHICULO (matricula, Tipo_vehiculo, id_solicitud) Values   
