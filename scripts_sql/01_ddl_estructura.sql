@@ -79,7 +79,7 @@ CREATE TABLE trampas (
 
 -- Registro Oficial de Muestras (ROM)
 CREATE TABLE registro_oficial_muestras (
-    Id_registro NUMERIC NOT NULL,
+    Id_registro INTEGER DEFAULT nextval ('seq_id_registro') NOT NULL,
     n_ruta VARCHAR(7) NOT NULL,
     codigo_auxiliar VARCHAR(6) NOT NULL,
     n_muestra INTEGER NOT NULL,
@@ -104,7 +104,7 @@ CREATE TABLE registro_oficial_trampas (
 
 -- Solicitud
 CREATE TABLE SOLICITUD (
-    Id_solicitud NUMERIC NOT NULL,
+    Id_solicitud INTEGER DEFAULT nextval('seq_id_solicitud'),
     codigo VARCHAR(6) NOT NULL,
     tipo_de_solicitud VARCHAR(20) NOT NULL,
     motivo_de_solicitud VARCHAR(50) NOT NULL,
@@ -124,7 +124,7 @@ CREATE TABLE SOLICITUD_EQUIPO (
     tipo_equipo VARCHAR(20) NOT NULL
 );
 
---secuencia (para los id de los empleados)
+--secuencia (para los id de los empleados, rom y solicitudes)
 Create sequence seq_id_empleado
 start with 100000
 increment by 1;
