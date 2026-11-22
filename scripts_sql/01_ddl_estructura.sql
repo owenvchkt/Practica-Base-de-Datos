@@ -24,15 +24,15 @@ CREATE TABLE tecnico_vigilancia (
 
 CREATE TABLE tecnico_cin (
     codigo_t_c VARCHAR(6) NOT NULL,
-    analista VARCHAR(6) NOT NULL,
+    analista VARCHAR(50) NOT NULL,
     placa VARCHAR(10) NOT NULL,
     CONSTRAINT pk_tecnico_cin PRIMARY KEY (codigo_t_c)
 );
 
 CREATE TABLE auxiliar (
     codigo_auxiliar VARCHAR(6) NOT NULL,
-    analista VARCHAR(6) NOT NULL,
-    tecnico_cin VARCHAR(6) NOT NULL,
+    analista VARCHAR(50) NOT NULL,
+    tecnico_cin VARCHAR(50) NOT NULL,
     placa VARCHAR(10),
     CONSTRAINT pk_auxiliar PRIMARY KEY (codigo_auxiliar)
 );
