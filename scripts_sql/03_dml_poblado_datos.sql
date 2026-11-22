@@ -23,7 +23,7 @@ Insert into Trabajador (Reponsable_de_zona, Zona, telefono) Values
 RETURNING codigo, Reponsable_de_zona;
 
 -- Analista
-Insert into Analista (codigo_analista, ROMF) Values 
+Insert into Analista (codigo_analista, ROMF)
     Select codigo, 'Amadeo Arellano' From Trabajador where nombre ='Juan Carlos'
     Union all
     Select codigo, 'Beto Caceres' From Trabajador where nombre ='Luis Perez'
@@ -36,7 +36,7 @@ Insert into Analista (codigo_analista, ROMF) Values
 
 
 -- Tecnico de vigilancia
-Insert into tecnico_vigilancia (codigo_t_v, placa) Values  
+Insert into tecnico_vigilancia (codigo_t_v, placa)
 
     Select codigo, 'DHF128' From Trabajador where nombre ='Pepe casas'
     Union all
@@ -49,20 +49,28 @@ Insert into tecnico_vigilancia (codigo_t_v, placa) Values
     Select codigo, 'MKL789' From Trabajador where nombre ='Ines Ramos';
 
 -- Tecnico CIN
-Insert into tecnico_cin (codigo_t_c, analista, placa) Values  
-    ('398573','153456','JDK329'),
-    ('504956','153456','POI963'),
-    ('918273','612394','RTY345'),
-    ('456129','845932','FGH678'),
-    ('827364','492015','CVB901');
+Insert into tecnico_cin (codigo_t_c, analista, placa)
+    Select codigo,'Juan Carlos','JDK329' From Trabajador where nombre ='Maria alvarado'
+    Union all
+    Select codigo,'Juan Carlos','POI963' From Trabajador where nombre ='Carlos Ruiz'
+    Union all
+    Select codigo,'Luis Perez','RTY345' From Trabajador where nombre ='Jose Lira'
+    Union all
+    Select codigo,'Carmen Rojas','FGH678' From Trabajador where nombre ='Paco Mora'
+    Union all
+    Select codigo,'Jorge Diaz','CVB901' From Trabajador where nombre ='Luz Tapia';
     
 -- Auxiliar
-Insert into Auxiliar (codigo_auxiliar, analista, tecnico_cin, placa) Values   
-    ('278645','153456','398573',NULL),
-    ('296548','153456','398573','DHE695'),
-    ('276593','153456','504956',NULL),
-    ('635241','612394','918273','LKP234'),
-    ('294857','845932','456129','QWE567');
+Insert into Auxiliar (codigo_auxiliar, analista, tecnico_cin, placa)
+    Select codigo,'Juan Carlos','Maria alvarado',NULL From Trabajador where nombre ='Pedro samuel'
+    Union all
+    Select codigo,'Juan Carlos','Maria alvarado','DHE695' From Trabajador where nombre ='Orlando toledo'
+    Union all
+    Select codigo,'Juan Carlos','Carlos Ruiz',NULL From Trabajador where nombre ='Ana Gomez'
+    Union all
+    Select codigo,'Luis Perez','Jose Lira','LKP234' From Trabajador where nombre ='Tito Ruiz'
+    Union all
+    Select codigo,'Carmen Rojas','Paco Mora','QWE567' From Trabajador where nombre ='Gema Paz';
 
 -- Ruta
 Insert into Ruta (n_ruta, provincia, cantidad, n_muestras, fecha, semana) Values   
@@ -85,45 +93,67 @@ Insert into Vehiculo (placa, n_ruta, tipo_de_vehiculo, nombre, kilometraje_inici
     ('POI963', '1005022', 'Combi', 'Carlos Ruiz', 80000, 80150);
     
 -- Trabajo Diario
-Insert into trabajo_diario (auxiliar_encargado, tipo_de_control, n_ruta) Values   
-    ('278645','Quimico','0912345'),
-    ('296548','Biologico','0502001'),
-    ('276593','Cultural','0702010'),
-    ('635241','Quimico','0407194'),
-    ('294857','Biologico','1005022');
+Insert into trabajo_diario (auxiliar_encargado, tipo_de_control, n_ruta) 
+    
+    Select codigo,'Quimico','0912345',NULL From Trabajador where nombre ='Pedro samuel'
+    Union all
+    Select codigo,'Biologico','0502001',NULL From Trabajador where nombre ='Orlando toledo'
+    Union all
+    Select codigo,'Cultural','0702010',NULL From Trabajador where nombre ='Ana Gomez'
+    Union all
+    Select codigo,'Quimico','0407194',NULL From Trabajador where nombre ='Tito Ruiz'
+    Union all
+    Select codigo,'Biologico','1005022',NULL From Trabajador where nombre ='Gema Paz';
 
 -- Trampas
 Insert into trampas (Cd_trampa, n_ruta, tipo_trampa, estado, codigo_inspector) Values   
-    ('011702301', '0117023', 'JT', 'B', '832456'),
-    ('011702302', '0117023', 'ML', 'S', '832456'),
-    ('011702303', '0117023', 'ML', 'B', '832456'),
-    ('030101501', '0301015', 'JT', 'B', '705945'),
-    ('030101502', '0301015', 'ML', 'M', '705945'),
-    ('030101503', '0301015', 'JT', 'R', '705945');
+     Select '011702301', '0117023', 'JT', 'B', codigo From Trabajador where nombre = 'Pepe casas'
+    Union all
+     Select '011702302', '0117023', 'ML', 'S', codigo From Trabajador where nombre = 'Pepe casas'
+    Union all
+     Select '011702303', '0117023', 'ML', 'B', codigo From Trabajador where nombre = 'Pepe casas'
+    Union all
+     Select '030101501', '0301015', 'JT', 'B', codigo From Trabajador where nombre = 'Luis Fernandez'
+    Union all
+     Select '030101502', '0301015', 'ML', 'M', codigo From Trabajador where nombre = 'Luis Fernandez'
+    Union all
+     Select '030101503', '0301015', 'JT', 'R', codigo From Trabajador where nombre = 'Luis Fernandez';
     
 -- Registro Oficial de Muestras (ROM)
 Insert into registro_oficial_muestras (n_ruta, codigo_auxiliar, n_muestra, fecha, procedencia, especie, cultivar) Values   
-    ('0502001', '278645', 3, '2026-10-30', 'Planta', 'Palta', 'Fuerte'),
-    ('0502001', '278645', 12, '2026-10-29', 'Planta', 'Guayaba', 'Hass'),
-    ('0912345', '296548', 2, '2026-10-29', 'Suelo', 'Mango', 'Sutano'),
-    ('0912345', '296548', 5, '2026-10-28', 'Planta', 'Chirimoya', 'Criolla'),
-    ('0702010', '276593', 8, '2026-10-22', 'Planta', 'Uva', 'Italia');
+    Select '0502001', codigo, 3, '2026-10-30', 'Planta', 'Palta', 'Fuerte' From Trabajador where nombre = 'Pedro samuel'
+    Union all
+    Select '0502001', codigo, 12, '2026-10-29', 'Planta', 'Guayaba', 'Hass' From Trabajador where nombre = 'Pedro samuel'
+    Union all
+    Select '0912345', codigo, 2, '2026-10-29', 'Suelo', 'Mango', 'Sutano' From Trabajador where nombre = 'Orlando toledo'
+    Union all
+    Select '0912345', codigo, 5, '2026-10-28', 'Planta', 'Chirimoya', 'Criolla' From Trabajador where nombre = 'Orlando toledo'
+    Union all
+    Select '0702010', codigo, 8, '2026-10-22', 'Planta', 'Uva', 'Italia' From Trabajador where nombre = 'Ana Gomez';
 
 -- Registro Oficial de Trampas (ROT)
 Insert into registro_oficial_trampas (Cod_trampa, codigo_tecnico, fecha, exposicion, placa, kilometraje_inicial, kilometraje_final) Values   
-    ('011702301JT','832456','2026-10-28',4,'DHF128',34563,34566),
-    ('011702301ML','832456','2026-10-29',6,'DHF128',34566,34567),
-    ('030101501JT','705945','2026-10-25',7,'BJW102',10000,10020),
-    ('011702303ML','832456','2026-10-30',5,'DHF128',34567,34570),
-    ('030101502ML','705945','2026-10-26',8,'BJW102',10020,10045);
+    Select '011702301JT', codigo,'2026-10-28',4,'DHF128',34563,34566 From Trabajador where nombre = 'Pepe casas'
+    Union all
+    Select '011702301ML', codigo,'2026-10-29',6,'DHF128',34566,34567 From Trabajador where nombre = 'Pepe casas'
+    Union all
+    Select '030101501JT', codigo,'2026-10-25',7,'BJW102',10000,10020 From Trabajador where nombre = 'Luis Fernandez'
+    Union all
+    Select '011702303ML', codigo,'2026-10-30',5,'DHF128',34567,34570 From Trabajador where nombre = 'Pepe casas'
+    Union all
+    Select '030101502ML', codigo,'2026-10-26',8,'BJW102',10020,10045 From Trabajador where nombre = 'Luis Fernandez';
 
 -- Solicitud
 Insert into SOLICITUD (codigo, tipo_de_solicitud, motivo_de_solicitud, tiempo_uso) Values
-    ('153456','Vehiculo','Transporte de personal',2),
-    ('705945','Equipo','Instalacion de trampas',2),
-    ('276593','Equipo','Renovacion de trampas',3),
-    ('398573','Equipo','Uso en zonas alejadas',3),
-    ('504956','Vehiculo','Transporte de trampas',2);
+    Select  codigo,'Vehiculo','Transporte de personal',2 From Trabajador where nombre = 'Juan Carlos'
+    Union all
+    Select  codigo,'Equipo','Instalacion de trampas',2 From Trabajador where nombre = 'Luis Fernandez'
+    Union all
+    Select  codigo,'Equipo','Renovacion de trampas',3 From Trabajador where nombre = 'Ana Gomez'
+    Union all
+    Select  codigo,'Equipo','Uso en zonas alejadas',3 From Trabajador where nombre = 'Maria alvarado'
+    Union all
+    Select  codigo,'Vehiculo','Transporte de trampas',2 From Trabajador where nombre = 'Carlos Ruiz';
 
 -- Solicitud Vehiculo
 Insert into SOLICITUD_VEHICULO (matricula, Tipo_vehiculo, id_solicitud) Values   
