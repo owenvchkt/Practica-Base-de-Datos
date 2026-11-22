@@ -3,7 +3,7 @@ CREATE SCHEMA public;
 
 -- Trabajadores y subtipos
 CREATE TABLE Trabajador (
-    codigo VARCHAR(6) NOT NULL,
+    codigo INTEGER DEFAULT nextval('seq_id_empleado'),
     Reponsable_de_zona VARCHAR(50) NOT NULL,
     Zona VARCHAR(20) NOT NULL,
     telefono INTEGER,
