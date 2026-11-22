@@ -1,41 +1,52 @@
 -- Trabajador
-Insert into Trabajador (codigo, Reponsable_de_zona, Zona, telefono) Values 
-    ('153456','Juan Carlos','Uchumayo',987123574),
-    ('832456','Pepe casas','Tambo',923450765),
-    ('398573','Maria alvarado','Arequipa',921047394),
-    ('278645','Pedro samuel','Santa rita',904653833),
-    ('296548','Orlando toledo','Joya antigua',940673622),
-    ('705945','Luis Fernandez','Cural',987654321), 
-    ('276593','Ana Gomez','Vitor',912345678), 
-    ('504956','Carlos Ruiz','Siguas',998877665),
-    ('612394','Luis Perez','Majes (I)',954321876),
-    ('845932','Carmen Rojas','Camana',965412398),
-    ('492015','Jorge Diaz','Yauca',978564123),
-    ('758392','Rosa Silva','Vitor',932145876),
-    ('184950','Raul Castro','Ocoña',945612378),
-    ('593821','Hugo Blanco','Viraco',987456123),
-    ('302918','Ines Ramos','Colca',912365478),
-    ('918273','Jose Lira','Tambo',963258741),
-    ('456129','Paco Mora','Cural',974125896),
-    ('827364','Luz Tapia','Siguas',985214763),
-    ('635241','Tito Ruiz','Yuramayo',996325874),
-    ('294857','Gema Paz','Chapa',914785236);
+Insert into Trabajador (Reponsable_de_zona, Zona, telefono) Values 
+    ('Juan Carlos','Uchumayo',987123574),
+    ('Pepe casas','Tambo',923450765),
+    ('Maria alvarado','Arequipa',921047394),
+    ('Pedro samuel','Santa rita',904653833),
+    ('Orlando toledo','Joya antigua',940673622),
+    ('Luis Fernandez','Cural',987654321), 
+    ('Ana Gomez','Vitor',912345678), 
+    ('Carlos Ruiz','Siguas',998877665),
+    ('Luis Perez','Majes (I)',954321876),
+    ('Carmen Rojas','Camana',965412398),
+    ('Jorge Diaz','Yauca',978564123),
+    ('Rosa Silva','Vitor',932145876),
+    ('Raul Castro','Ocoña',945612378),
+    ('Hugo Blanco','Viraco',987456123),
+    ('Ines Ramos','Colca',912365478),
+    ('Jose Lira','Tambo',963258741),
+    ('Paco Mora','Cural',974125896),
+    ('Luz Tapia','Siguas',985214763),
+    ('Tito Ruiz','Yuramayo',996325874),
+    ('Gema Paz','Chapa',914785236);
+RETURNING codigo, Reponsable_de_zona;
 
 -- Analista
 Insert into Analista (codigo_analista, ROMF) Values 
-    ('153456','Amadeo Arellano'),
-    ('612394','Beto Caceres'),
-    ('845932','Cesar Luna'),
-    ('492015','Diana Rios'),
-    ('758392','Elena Vargas');
+    Select codigo, 'Amadeo Arellano' From Trabajador where nombre ='Juan Carlos'
+    Union all
+    Select codigo, 'Beto Caceres' From Trabajador where nombre ='Luis Perez'
+    Union all
+    Select codigo, 'Cesar Luna' From Trabajador where nombre ='Carmen Rojas'
+    Union all
+    Select codigo, 'Diana Rios' From Trabajador where nombre ='Jorge Diaz'
+    Union all
+    Select codigo, 'Elena Vargas' From Trabajador where nombre ='Rosa Silva';
+
 
 -- Tecnico de vigilancia
 Insert into tecnico_vigilancia (codigo_t_v, placa) Values  
-    ('832456','DHF128'),
-    ('705945','BJW102'),
-    ('184950','XTY892'),
-    ('593821','VBN456'),
-    ('302918','MKL789');
+
+    Select codigo, 'DHF128' From Trabajador where nombre ='Pepe casas'
+    Union all
+    Select codigo, 'BJW102' From Trabajador where nombre ='Luis Fernandez'
+    Union all
+    Select codigo, 'XTY892' From Trabajador where nombre ='Raul Castro'
+    Union all
+    Select codigo, 'VBN456' From Trabajador where nombre ='Hugo Blanco'
+    Union all
+    Select codigo, 'MKL789' From Trabajador where nombre ='Ines Ramos';
 
 -- Tecnico CIN
 Insert into tecnico_cin (codigo_t_c, analista, placa) Values  
