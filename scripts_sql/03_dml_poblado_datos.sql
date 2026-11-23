@@ -120,27 +120,27 @@ Insert into trampas (Cd_trampa, n_ruta, tipo_trampa, estado, codigo_inspector)
     
 -- Registro Oficial de Muestras (ROM)
 Insert into registro_oficial_muestras (n_ruta, codigo_auxiliar, n_muestra, fecha, procedencia, especie, cultivar)
-    Select '0502001', codigo, 3, '2026-10-30', 'Planta', 'Palta', 'Fuerte' From Trabajador where Reponsable_de_zona = 'Pedro samuel'
+    Select '0502001', codigo, 3, '2026-10-30'::DATE, 'Planta', 'Palta', 'Fuerte' From Trabajador where Reponsable_de_zona = 'Pedro samuel'
     Union all
-    Select '0502001', codigo, 12, '2026-10-29', 'Planta', 'Guayaba', 'Hass' From Trabajador where Reponsable_de_zona = 'Pedro samuel'
+    Select '0502001', codigo, 12, '2026-10-29'::DATE, 'Planta', 'Guayaba', 'Hass' From Trabajador where Reponsable_de_zona = 'Pedro samuel'
     Union all
-    Select '0912345', codigo, 2, '2026-10-29', 'Suelo', 'Mango', 'Sutano' From Trabajador where Reponsable_de_zona = 'Orlando toledo'
+    Select '0912345', codigo, 2, '2026-10-29'::DATE, 'Suelo', 'Mango', 'Sutano' From Trabajador where Reponsable_de_zona = 'Orlando toledo'
     Union all
-    Select '0912345', codigo, 5, '2026-10-28', 'Planta', 'Chirimoya', 'Criolla' From Trabajador where Reponsable_de_zona = 'Orlando toledo'
+    Select '0912345', codigo, 5, '2026-10-28'::DATE, 'Planta', 'Chirimoya', 'Criolla' From Trabajador where Reponsable_de_zona = 'Orlando toledo'
     Union all
-    Select '0702010', codigo, 8, '2026-10-22', 'Planta', 'Uva', 'Italia' From Trabajador where Reponsable_de_zona = 'Ana Gomez';
+    Select '0702010', codigo, 8, '2026-10-22'::DATE, 'Planta', 'Uva', 'Italia' From Trabajador where Reponsable_de_zona = 'Ana Gomez';
 
 -- Registro Oficial de Trampas (ROT)
 Insert into registro_oficial_trampas (Cod_trampa, codigo_tecnico, fecha, exposicion, placa, kilometraje_inicial, kilometraje_final)
-    Select '011702301JT', codigo,'2026-10-28',4,'DHF128',34563,34566 From Trabajador where Reponsable_de_zona = 'Pepe casas'
+    Select '011702301JT', codigo, '2026-10-28'::DATE, 4, 'DHF128', 34563, 34566 From Trabajador where Reponsable_de_zona = 'Pepe casas'
     Union all
-    Select '011702301ML', codigo,'2026-10-29',6,'DHF128',34566,34567 From Trabajador where Reponsable_de_zona = 'Pepe casas'
+    Select '011702301ML', codigo, '2026-10-29'::DATE, 6, 'DHF128', 34566, 34567 From Trabajador where Reponsable_de_zona = 'Pepe casas'
     Union all
-    Select '030101501JT', codigo,'2026-10-25',7,'BJW102',10000,10020 From Trabajador where Reponsable_de_zona = 'Luis Fernandez'
+    Select '030101501JT', codigo, '2026-10-25'::DATE, 7, 'BJW102', 10000, 10020 From Trabajador where Reponsable_de_zona = 'Luis Fernandez'
     Union all
-    Select '011702303ML', codigo,'2026-10-30',5,'DHF128',34567,34570 From Trabajador where Reponsable_de_zona = 'Pepe casas'
+    Select '011702303ML', codigo, '2026-10-30'::DATE, 5, 'DHF128', 34567, 34570 From Trabajador where Reponsable_de_zona = 'Pepe casas'
     Union all
-    Select '030101502ML', codigo,'2026-10-26',8,'BJW102',10020,10045 From Trabajador where Reponsable_de_zona = 'Luis Fernandez';
+    Select '030101502ML', codigo, '2026-10-26'::DATE, 8, 'BJW102', 10020, 10045 From Trabajador where Reponsable_de_zona = 'Luis Fernandez';
 
 -- Solicitud
 Insert into SOLICITUD (codigo, tipo_de_solicitud, motivo_de_solicitud, tiempo_uso)
