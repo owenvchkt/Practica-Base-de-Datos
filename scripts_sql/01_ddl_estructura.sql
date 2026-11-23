@@ -1,9 +1,14 @@
 DROP SCHEMA public CASCADE;
 CREATE SCHEMA public;
 
+-- Secuencias
+CREATE SEQUENCE seq_id_empleado START WITH 100000 INCREMENT BY 1;
+CREATE SEQUENCE seq_id_registro START WITH 100000000 INCREMENT BY 1;
+CREATE SEQUENCE seq_id_solicitud START WITH 100000000 INCREMENT BY 1;
+
 -- Trabajadores y subtipos
 CREATE TABLE Trabajador (
-    codigo INTEGER DEFAULT nextval('seq_id_empleado'),
+    codigo INTEGER DEFAULT nextval('seq_id_empleado') NOT NULL,
     Reponsable_de_zona VARCHAR(50) NOT NULL,
     Zona VARCHAR(20) NOT NULL,
     telefono INTEGER,
@@ -11,28 +16,28 @@ CREATE TABLE Trabajador (
 );
 
 CREATE TABLE Analista (
-    codigo_analista VARCHAR(6) NOT NULL,
+    codigo_analista INTEGER NOT NULL,
     ROMF VARCHAR(50) NOT NULL,
     CONSTRAINT pk_Analista PRIMARY KEY (codigo_analista)
 );
 
 CREATE TABLE tecnico_vigilancia (
-    codigo_t_v VARCHAR(6) NOT NULL,
+    codigo_t_v INTEGER NOT NULL,
     placa VARCHAR(10) NOT NULL,
     CONSTRAINT pk_tecnico_vigilancia PRIMARY KEY (codigo_t_v)
 );
 
 CREATE TABLE tecnico_cin (
-    codigo_t_c VARCHAR(6) NOT NULL,
-    analista VARCHAR(50) NOT NULL,
+    codigo_t_c INTEGER NOT NULL,
+    analista INTEGER NOT NULL,
     placa VARCHAR(10) NOT NULL,
     CONSTRAINT pk_tecnico_cin PRIMARY KEY (codigo_t_c)
 );
 
 CREATE TABLE auxiliar (
-    codigo_auxiliar VARCHAR(6) NOT NULL,
-    analista VARCHAR(50) NOT NULL,
-    tecnico_cin VARCHAR(50) NOT NULL,
+    codigo_auxiliar INTEGER NOT NULL,
+    analista INTEGER NOT NULL,
+    tecnico_cin INTEGER NOT NULL,
     placa VARCHAR(10),
     CONSTRAINT pk_auxiliar PRIMARY KEY (codigo_auxiliar)
 );
@@ -61,7 +66,7 @@ CREATE TABLE vehiculo (
 
 -- Trabajo Diario
 CREATE TABLE trabajo_diario (
-    auxiliar_encargado VARCHAR(6) NOT NULL,
+    auxiliar_encargado INTEGER NOT NULL,
     tipo_de_control VARCHAR(12) NOT NULL,
     n_ruta VARCHAR(7) NOT NULL,
     CONSTRAINT pk_trabajo_diario PRIMARY KEY (auxiliar_encargado)
@@ -73,15 +78,15 @@ CREATE TABLE trampas (
     n_ruta VARCHAR(7) NOT NULL,
     tipo_trampa VARCHAR(2) NOT NULL,
     estado VARCHAR(1) NOT NULL,
-    codigo_inspector VARCHAR(6) NOT NULL,
+    codigo_inspector INTEGER NOT NULL,
     CONSTRAINT pk_trampas PRIMARY KEY (Cd_trampa)
 );
 
 -- Registro Oficial de Muestras (ROM)
 CREATE TABLE registro_oficial_muestras (
-    Id_registro INTEGER DEFAULT nextval ('seq_id_registro') NOT NULL,
+    Id_registro INTEGER DEFAULT nextval('seq_id_registro') NOT NULL,
     n_ruta VARCHAR(7) NOT NULL,
-    codigo_auxiliar VARCHAR(6) NOT NULL,
+    codigo_auxiliar INTEGER NOT NULL,
     n_muestra INTEGER NOT NULL,
     fecha DATE DEFAULT CURRENT_DATE NOT NULL,
     procedencia VARCHAR(7) NOT NULL,
@@ -93,7 +98,7 @@ CREATE TABLE registro_oficial_muestras (
 -- Registro Oficial de Trampas (ROT)
 CREATE TABLE registro_oficial_trampas (
     Cod_trampa VARCHAR(11) NOT NULL,
-    codigo_tecnico VARCHAR(6) NOT NULL,
+    codigo_tecnico INTEGER NOT NULL,
     fecha DATE DEFAULT CURRENT_DATE NOT NULL,
     exposicion NUMERIC NOT NULL,
     placa VARCHAR(10) NOT NULL,
@@ -104,8 +109,8 @@ CREATE TABLE registro_oficial_trampas (
 
 -- Solicitud
 CREATE TABLE SOLICITUD (
-    Id_solicitud INTEGER DEFAULT nextval('seq_id_solicitud'),
-    codigo VARCHAR(6) NOT NULL,
+    Id_solicitud INTEGER DEFAULT nextval('seq_id_solicitud') NOT NULL,
+    codigo INTEGER NOT NULL,
     tipo_de_solicitud VARCHAR(20) NOT NULL,
     motivo_de_solicitud VARCHAR(50) NOT NULL,
     tiempo_uso NUMERIC,
@@ -123,16 +128,3 @@ CREATE TABLE SOLICITUD_EQUIPO (
     codigo_equipo VARCHAR(10) CONSTRAINT cod_equipo PRIMARY KEY,
     tipo_equipo VARCHAR(20) NOT NULL
 );
-
---secuencia (para los id de los empleados, rom y solicitudes)
-Create sequence seq_id_empleado
-start with 100000
-increment by 1;
-
-Create sequence seq_id_registro
-start with 100000000
-increment by 1;
-
-Create sequence seq_id_solicitud
-start with 100000000
-increment by 1;
