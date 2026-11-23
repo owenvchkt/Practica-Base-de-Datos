@@ -20,57 +20,56 @@ Insert into Trabajador (Reponsable_de_zona, Zona, telefono) Values
     ('Luz Tapia','Siguas',985214763),
     ('Tito Ruiz','Yuramayo',996325874),
     ('Gema Paz','Chapa',914785236);
-RETURNING codigo, Reponsable_de_zona;
 
 -- Analista
 Insert into Analista (codigo_analista, ROMF)
-    Select codigo, 'Amadeo Arellano' From Trabajador where nombre ='Juan Carlos'
+    Select codigo, 'Amadeo Arellano' From Trabajador where Reponsable_de_zona ='Juan Carlos'
     Union all
-    Select codigo, 'Beto Caceres' From Trabajador where nombre ='Luis Perez'
+    Select codigo, 'Beto Caceres' From Trabajador where Reponsable_de_zona ='Luis Perez'
     Union all
-    Select codigo, 'Cesar Luna' From Trabajador where nombre ='Carmen Rojas'
+    Select codigo, 'Cesar Luna' From Trabajador where Reponsable_de_zona ='Carmen Rojas'
     Union all
-    Select codigo, 'Diana Rios' From Trabajador where nombre ='Jorge Diaz'
+    Select codigo, 'Diana Rios' From Trabajador where Reponsable_de_zona ='Jorge Diaz'
     Union all
-    Select codigo, 'Elena Vargas' From Trabajador where nombre ='Rosa Silva';
+    Select codigo, 'Elena Vargas' From Trabajador where Reponsable_de_zona ='Rosa Silva';
 
 
 -- Tecnico de vigilancia
 Insert into tecnico_vigilancia (codigo_t_v, placa)
 
-    Select codigo, 'DHF128' From Trabajador where nombre ='Pepe casas'
+    Select codigo, 'DHF128' From Trabajador where Reponsable_de_zona ='Pepe casas'
     Union all
-    Select codigo, 'BJW102' From Trabajador where nombre ='Luis Fernandez'
+    Select codigo, 'BJW102' From Trabajador where Reponsable_de_zona ='Luis Fernandez'
     Union all
-    Select codigo, 'XTY892' From Trabajador where nombre ='Raul Castro'
+    Select codigo, 'XTY892' From Trabajador where Reponsable_de_zona ='Raul Castro'
     Union all
-    Select codigo, 'VBN456' From Trabajador where nombre ='Hugo Blanco'
+    Select codigo, 'VBN456' From Trabajador where Reponsable_de_zona ='Hugo Blanco'
     Union all
-    Select codigo, 'MKL789' From Trabajador where nombre ='Ines Ramos';
+    Select codigo, 'MKL789' From Trabajador where Reponsable_de_zona ='Ines Ramos';
 
 -- Tecnico CIN
 Insert into tecnico_cin (codigo_t_c, analista, placa)
-    Select codigo,'Juan Carlos','JDK329' From Trabajador where nombre ='Maria alvarado'
+    Select codigo,(Select codigo From Trabajador where Reponsable_de_zona ='Juan Carlos'),'JDK329' From Trabajador where Reponsable_de_zona ='Maria alvarado'
     Union all
-    Select codigo,'Juan Carlos','POI963' From Trabajador where nombre ='Carlos Ruiz'
+    Select codigo,(Select codigo From Trabajador where Reponsable_de_zona ='Juan Carlos'),'POI963' From Trabajador where Reponsable_de_zona ='Carlos Ruiz'
     Union all
-    Select codigo,'Luis Perez','RTY345' From Trabajador where nombre ='Jose Lira'
+    Select codigo,(Select codigo From Trabajador where Reponsable_de_zona ='Luis Perez'),'RTY345' From Trabajador where Reponsable_de_zona ='Jose Lira'
     Union all
-    Select codigo,'Carmen Rojas','FGH678' From Trabajador where nombre ='Paco Mora'
+    Select codigo,(Select codigo From Trabajador where Reponsable_de_zona ='Carmen Rojas'),'FGH678' From Trabajador where Reponsable_de_zona ='Paco Mora'
     Union all
-    Select codigo,'Jorge Diaz','CVB901' From Trabajador where nombre ='Luz Tapia';
+    Select codigo,(Select codigo From Trabajador where Reponsable_de_zona ='Jorge Diaz'),'CVB901' From Trabajador where Reponsable_de_zona ='Luz Tapia';
     
 -- Auxiliar
 Insert into Auxiliar (codigo_auxiliar, analista, tecnico_cin, placa)
-    Select codigo,'Juan Carlos','Maria alvarado',NULL From Trabajador where nombre ='Pedro samuel'
+    Select codigo,(Select codigo From Trabajador where Reponsable_de_zona ='Juan Carlos'),(Select codigo From Trabajador where Reponsable_de_zona ='Maria alvarado'),NULL From Trabajador where Reponsable_de_zona ='Pedro samuel'
     Union all
-    Select codigo,'Juan Carlos','Maria alvarado','DHE695' From Trabajador where nombre ='Orlando toledo'
+    Select codigo,(Select codigo From Trabajador where Reponsable_de_zona ='Juan Carlos'),(Select codigo From Trabajador where Reponsable_de_zona ='Maria alvarado'),'DHE695' From Trabajador where Reponsable_de_zona ='Orlando toledo'
     Union all
-    Select codigo,'Juan Carlos','Carlos Ruiz',NULL From Trabajador where nombre ='Ana Gomez'
+    Select codigo,(Select codigo From Trabajador where Reponsable_de_zona ='Juan Carlos'),(Select codigo From Trabajador where Reponsable_de_zona ='Carlos Ruiz'),NULL From Trabajador where Reponsable_de_zona ='Ana Gomez'
     Union all
-    Select codigo,'Luis Perez','Jose Lira','LKP234' From Trabajador where nombre ='Tito Ruiz'
+    Select codigo,(Select codigo From Trabajador where Reponsable_de_zona ='Luis Perez'),(Select codigo From Trabajador where Reponsable_de_zona ='Jose Lira'),'LKP234' From Trabajador where Reponsable_de_zona ='Tito Ruiz'
     Union all
-    Select codigo,'Carmen Rojas','Paco Mora','QWE567' From Trabajador where nombre ='Gema Paz';
+    Select codigo,(Select codigo From Trabajador where Reponsable_de_zona ='Carmen Rojas'),(Select codigo From Trabajador where Reponsable_de_zona ='Paco Mora'),'QWE567' From Trabajador where Reponsable_de_zona ='Gema Paz';
 
 -- Ruta
 Insert into Ruta (n_ruta, provincia, cantidad, n_muestras, fecha, semana) Values   
@@ -95,78 +94,78 @@ Insert into Vehiculo (placa, n_ruta, tipo_de_vehiculo, nombre, kilometraje_inici
 -- Trabajo Diario
 Insert into trabajo_diario (auxiliar_encargado, tipo_de_control, n_ruta) 
     
-    Select codigo,'Quimico','0912345',NULL From Trabajador where nombre ='Pedro samuel'
+    Select codigo,'Quimico','0912345' From Trabajador where Reponsable_de_zona ='Pedro samuel'
     Union all
-    Select codigo,'Biologico','0502001',NULL From Trabajador where nombre ='Orlando toledo'
+    Select codigo,'Biologico','0502001' From Trabajador where Reponsable_de_zona ='Orlando toledo'
     Union all
-    Select codigo,'Cultural','0702010',NULL From Trabajador where nombre ='Ana Gomez'
+    Select codigo,'Cultural','0702010' From Trabajador where Reponsable_de_zona ='Ana Gomez'
     Union all
-    Select codigo,'Quimico','0407194',NULL From Trabajador where nombre ='Tito Ruiz'
+    Select codigo,'Quimico','0407194' From Trabajador where Reponsable_de_zona ='Tito Ruiz'
     Union all
-    Select codigo,'Biologico','1005022',NULL From Trabajador where nombre ='Gema Paz';
+    Select codigo,'Biologico','1005022' From Trabajador where Reponsable_de_zona ='Gema Paz';
 
 -- Trampas
-Insert into trampas (Cd_trampa, n_ruta, tipo_trampa, estado, codigo_inspector) Values   
-     Select '011702301', '0117023', 'JT', 'B', codigo From Trabajador where nombre = 'Pepe casas'
+Insert into trampas (Cd_trampa, n_ruta, tipo_trampa, estado, codigo_inspector)
+     Select '011702301', '0117023', 'JT', 'B', codigo From Trabajador where Reponsable_de_zona = 'Pepe casas'
     Union all
-     Select '011702302', '0117023', 'ML', 'S', codigo From Trabajador where nombre = 'Pepe casas'
+     Select '011702302', '0117023', 'ML', 'S', codigo From Trabajador where Reponsable_de_zona = 'Pepe casas'
     Union all
-     Select '011702303', '0117023', 'ML', 'B', codigo From Trabajador where nombre = 'Pepe casas'
+     Select '011702303', '0117023', 'ML', 'B', codigo From Trabajador where Reponsable_de_zona = 'Pepe casas'
     Union all
-     Select '030101501', '0301015', 'JT', 'B', codigo From Trabajador where nombre = 'Luis Fernandez'
+     Select '030101501', '0301015', 'JT', 'B', codigo From Trabajador where Reponsable_de_zona = 'Luis Fernandez'
     Union all
-     Select '030101502', '0301015', 'ML', 'M', codigo From Trabajador where nombre = 'Luis Fernandez'
+     Select '030101502', '0301015', 'ML', 'M', codigo From Trabajador where Reponsable_de_zona = 'Luis Fernandez'
     Union all
-     Select '030101503', '0301015', 'JT', 'R', codigo From Trabajador where nombre = 'Luis Fernandez';
+     Select '030101503', '0301015', 'JT', 'R', codigo From Trabajador where Reponsable_de_zona = 'Luis Fernandez';
     
 -- Registro Oficial de Muestras (ROM)
-Insert into registro_oficial_muestras (n_ruta, codigo_auxiliar, n_muestra, fecha, procedencia, especie, cultivar) Values   
-    Select '0502001', codigo, 3, '2026-10-30', 'Planta', 'Palta', 'Fuerte' From Trabajador where nombre = 'Pedro samuel'
+Insert into registro_oficial_muestras (n_ruta, codigo_auxiliar, n_muestra, fecha, procedencia, especie, cultivar)
+    Select '0502001', codigo, 3, '2026-10-30', 'Planta', 'Palta', 'Fuerte' From Trabajador where Reponsable_de_zona = 'Pedro samuel'
     Union all
-    Select '0502001', codigo, 12, '2026-10-29', 'Planta', 'Guayaba', 'Hass' From Trabajador where nombre = 'Pedro samuel'
+    Select '0502001', codigo, 12, '2026-10-29', 'Planta', 'Guayaba', 'Hass' From Trabajador where Reponsable_de_zona = 'Pedro samuel'
     Union all
-    Select '0912345', codigo, 2, '2026-10-29', 'Suelo', 'Mango', 'Sutano' From Trabajador where nombre = 'Orlando toledo'
+    Select '0912345', codigo, 2, '2026-10-29', 'Suelo', 'Mango', 'Sutano' From Trabajador where Reponsable_de_zona = 'Orlando toledo'
     Union all
-    Select '0912345', codigo, 5, '2026-10-28', 'Planta', 'Chirimoya', 'Criolla' From Trabajador where nombre = 'Orlando toledo'
+    Select '0912345', codigo, 5, '2026-10-28', 'Planta', 'Chirimoya', 'Criolla' From Trabajador where Reponsable_de_zona = 'Orlando toledo'
     Union all
-    Select '0702010', codigo, 8, '2026-10-22', 'Planta', 'Uva', 'Italia' From Trabajador where nombre = 'Ana Gomez';
+    Select '0702010', codigo, 8, '2026-10-22', 'Planta', 'Uva', 'Italia' From Trabajador where Reponsable_de_zona = 'Ana Gomez';
 
 -- Registro Oficial de Trampas (ROT)
-Insert into registro_oficial_trampas (Cod_trampa, codigo_tecnico, fecha, exposicion, placa, kilometraje_inicial, kilometraje_final) Values   
-    Select '011702301JT', codigo,'2026-10-28',4,'DHF128',34563,34566 From Trabajador where nombre = 'Pepe casas'
+Insert into registro_oficial_trampas (Cod_trampa, codigo_tecnico, fecha, exposicion, placa, kilometraje_inicial, kilometraje_final)
+    Select '011702301JT', codigo,'2026-10-28',4,'DHF128',34563,34566 From Trabajador where Reponsable_de_zona = 'Pepe casas'
     Union all
-    Select '011702301ML', codigo,'2026-10-29',6,'DHF128',34566,34567 From Trabajador where nombre = 'Pepe casas'
+    Select '011702301ML', codigo,'2026-10-29',6,'DHF128',34566,34567 From Trabajador where Reponsable_de_zona = 'Pepe casas'
     Union all
-    Select '030101501JT', codigo,'2026-10-25',7,'BJW102',10000,10020 From Trabajador where nombre = 'Luis Fernandez'
+    Select '030101501JT', codigo,'2026-10-25',7,'BJW102',10000,10020 From Trabajador where Reponsable_de_zona = 'Luis Fernandez'
     Union all
-    Select '011702303ML', codigo,'2026-10-30',5,'DHF128',34567,34570 From Trabajador where nombre = 'Pepe casas'
+    Select '011702303ML', codigo,'2026-10-30',5,'DHF128',34567,34570 From Trabajador where Reponsable_de_zona = 'Pepe casas'
     Union all
-    Select '030101502ML', codigo,'2026-10-26',8,'BJW102',10020,10045 From Trabajador where nombre = 'Luis Fernandez';
+    Select '030101502ML', codigo,'2026-10-26',8,'BJW102',10020,10045 From Trabajador where Reponsable_de_zona = 'Luis Fernandez';
 
 -- Solicitud
-Insert into SOLICITUD (codigo, tipo_de_solicitud, motivo_de_solicitud, tiempo_uso) Values
-    Select  codigo,'Vehiculo','Transporte de personal',2 From Trabajador where nombre = 'Juan Carlos'
+Insert into SOLICITUD (codigo, tipo_de_solicitud, motivo_de_solicitud, tiempo_uso)
+    Select  codigo,'Vehiculo','Transporte de personal',2 From Trabajador where Reponsable_de_zona = 'Juan Carlos'
     Union all
-    Select  codigo,'Equipo','Instalacion de trampas',2 From Trabajador where nombre = 'Luis Fernandez'
+    Select  codigo,'Equipo','Instalacion de trampas',2 From Trabajador where Reponsable_de_zona = 'Luis Fernandez'
     Union all
-    Select  codigo,'Equipo','Renovacion de trampas',3 From Trabajador where nombre = 'Ana Gomez'
+    Select  codigo,'Equipo','Renovacion de trampas',3 From Trabajador where Reponsable_de_zona = 'Ana Gomez'
     Union all
-    Select  codigo,'Equipo','Uso en zonas alejadas',3 From Trabajador where nombre = 'Maria alvarado'
+    Select  codigo,'Equipo','Uso en zonas alejadas',3 From Trabajador where Reponsable_de_zona = 'Maria alvarado'
     Union all
-    Select  codigo,'Vehiculo','Transporte de trampas',2 From Trabajador where nombre = 'Carlos Ruiz';
+    Select  codigo,'Vehiculo','Transporte de trampas',2 From Trabajador where Reponsable_de_zona = 'Carlos Ruiz';
 
 -- Solicitud Vehiculo
 Insert into SOLICITUD_VEHICULO (matricula, Tipo_vehiculo, id_solicitud) Values   
-    ('GFS466','Camioneta', 395740348),
-    ('NSY937','Moto', 393509483),
-    ('ETX565','Combi', 395740348),
-    ('DAJ310','Camioneta', 393509483),
-    ('HAT528','Camioneta', 395740348);
+    ('GFS466','Camioneta', 100000000),
+    ('NSY937','Moto', 100000004),
+    ('ETX565','Combi', 100000000),
+    ('DAJ310','Camioneta', 100000004),
+    ('HAT528','Camioneta', 100000000);
 
 -- Solicitud Equipo
 Insert into SOLICITUD_EQUIPO (codigo_equipo, tipo_equipo, id_solicitud) Values   
-    ('3654','Mochila fumigadora', 395376895),
-    ('5837','Mochila fumigadora', 396690432),
-    ('9074','Motosierra', 394759493),
-    ('6685','Mochila fumigadora', 395376895),
-    ('1927','Motosierra', 396690432);
+    ('3654','Mochila fumigadora', 100000001),
+    ('5837','Mochila fumigadora', 100000002),
+    ('9074','Motosierra', 100000003),
+    ('6685','Mochila fumigadora', 100000001),
+    ('1927','Motosierra', 100000002);
