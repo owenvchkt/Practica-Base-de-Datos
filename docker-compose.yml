@@ -15,5 +15,22 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./scripts_sql:/docker-entrypoint-initdb.d/
 
+  backend:
+    build: ./backend
+    container_name: senasa_backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      DB_HOST: postgres_db
+      DB_NAME: appdb
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_PORT: 5432
+    volumes:
+      - ./backend/app:/code/app
+    depends_on:
+      - postgres
+
 volumes:
   postgres_data:
