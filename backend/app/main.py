@@ -5,8 +5,10 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from app.database import get_connection
+from app.routers import personal
 
 app = FastAPI(title="API SENASA - Gestión y Reportes", version="1.0.0")
+app.include_router(personal.router)
 
 # --- Esquemas de entrada ---
 class SolicitudVehiculoCreate(BaseModel):
