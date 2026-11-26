@@ -5,9 +5,7 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from app.database import get_connection
 
-# Cada uno cambia el 'prefix' y 'tags' en su propio archivo
-# Ejemplo: prefix="/muestras", tags=["Muestras ROM"]
-router = APIRouter(prefix="/plantilla", tags=["Plantilla de Ejemplo"])
+router = APIRouter(prefix="/trampas", tags=["Trampas"])
 
 
 # --- 1. Esquema de datos de entrada (para POST / PUT) ---

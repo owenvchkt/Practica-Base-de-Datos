@@ -197,6 +197,7 @@ def exportar_reporte_muestras_csv(min_muestras: int = 1):
         headers={"Content-Disposition": "attachment; filename=reporte_muestras_senasa.csv"}
     )
 
-from app.routers import plantilla
+from app.routers import trampas, personal
 
-app.include_router(plantilla.router)
+app.include_router(trampas.router)
+app.include_router(personal.router)

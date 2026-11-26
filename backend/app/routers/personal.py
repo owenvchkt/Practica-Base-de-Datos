@@ -93,7 +93,7 @@ def listar_cadena_personal():
             ON tc_trabajador.codigo = tc.codigo_t_c
 
         LEFT JOIN auxiliar aux
-            ON aux.tecnico_cin = tc.codigo_t_c
+            ON aux.codigo_auxiliar = t.codigo
 
         LEFT JOIN trabajador aux_trabajador
             ON aux_trabajador.codigo = aux.codigo_auxiliar
